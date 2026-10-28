@@ -1,0 +1,66 @@
+name: 버그 신고
+description: 기대와 다르게 동작하는 것을 알려 주세요
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        보안 취약점은 이 양식 대신 [보안 정책](https://github.com/kingsejong-lang/.github/blob/main/SECURITY.md)에 따라 비공개로 알려 주세요.
+  - type: textarea
+    id: summary
+    attributes:
+      label: 무엇이 잘못되었나요?
+      description: 한두 문장으로 적어 주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법
+      description: 문제를 일으키는 가장 짧은 코드와 실행한 명령을 적어 주세요.
+      placeholder: |
+        ```ksj
+        출력(1 + 2)
+        ```
+        kingsejong 파일.ksj
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 결과
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 결과
+      description: 오류 메시지는 잘라내지 말고 그대로 붙여 주세요.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: runner
+    attributes:
+      label: 실행 방식
+      multiple: true
+      options:
+        - 평가기 (기본)
+        - 바이트코드 VM (--vm)
+        - REPL
+        - 웹 플레이그라운드
+        - VS Code 확장 / LSP
+        - lint / fmt
+        - 기타
+  - type: input
+    id: version
+    attributes:
+      label: 버전
+      description: "`kingsejong --version` 출력 또는 커밋 해시"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: 운영체제와 컴파일러
+      placeholder: "macOS 15, Apple Clang 17 / Ubuntu 24.04, GCC 13"
